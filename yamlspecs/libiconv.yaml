@@ -29,3 +29,5 @@
     extras:
       - "%define __arch_install_post %{nil}"
       - "%define __os_install_post %{nil}"
+  requires:
+      - gcc_{{ gcc_version }}
