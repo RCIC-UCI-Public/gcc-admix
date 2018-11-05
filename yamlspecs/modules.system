@@ -1,0 +1,14 @@
+# These are system packages required for build and can be installed with
+# make bootstrap
+# 32-bit development RPMS
+glibc-devel.i686
+libgcc.i686
+libstdc++-devel.i686 
+ncurses-devel.i686
+# Other development rpms
+bison
+flex
+gmp-devel
+libmpc-devel
+libmpfr-devel
+texinfo

@@ -1,0 +1,30 @@
+---
+- package: binutils update for gcc 6.5.0
+  name: binutils 
+  version: "2.31" 
+  extension: tar.gz
+  vendor_source: http://mirrors.kernel.org/gnu/binutils/binutils-2.31.tar.gz 
+  pkgname: "{{ name }}_{{ version }}"
+  gcc_version: "{{ pkg_defaults.gcc_version }}"
+  description: Binutils {{ version }} update for GCC {{ gcc_version }}
+  root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
+  prefix: "{{ root }}" 
+  build:
+    configure: ./configure
+    configure_args: --disable-nls --disable-werror --prefix={{ prefix }}
+    modules: 
+    target: 
+  install:
+    makeinstall: $(MAKE) prefix=$(ROOT)/{{ prefix }} install 
+    installextra: >
+      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }}; 
+      /bin/rm $(ROOT)/{{ prefix }}/share/info/dir
+  files:
+    - "{{ prefix }}/R*" 
+    - "{{ prefix }}/bin/*" 
+    - "{{ prefix }}/include/*" 
+    - "{{ prefix }}/lib/lib*" 
+    - "{{ prefix }}/x86_64-pc-linux-gnu/bin/*"
+    - "{{ prefix }}/x86_64-pc-linux-gnu/lib/*"
+    - "{{ prefix }}/share/info/*" 
+    - "{{ prefix }}/share/man/man1/*" 

@@ -1,0 +1,31 @@
+---
+- package: libiconv update for gcc {{ gcc_version }} 
+  name: libiconv 
+  version: "{{ pkg_defaults.libiconv_version }}" 
+  extension: tar.gz
+  vendor_source: http://mirrors.kernel.org/gnu/libiconv/libiconv-{{ version }}.tar.gz 
+  pkgname: "{{ name }}_{{ version }}"
+  gcc_version: "{{ pkg_defaults.gcc_version }}"
+  description: libiconv {{ version }} update for GCC {{ gcc_version }}
+  root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
+  prefix: "{{ root }}" 
+  build:
+    configure_args: --disable-nls
+    modules: gcc/{{ gcc_version }}
+    target: 
+  install:
+    makeinstall: $(MAKE) DESTDIR=$(ROOT) install
+    installextra: >
+      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }}
+  files:
+    - "{{ prefix }}/R*" 
+    - "{{ prefix }}/bin/*" 
+    - "{{ prefix }}/include/*" 
+    - "{{ prefix }}/lib/*" 
+    - "{{ prefix }}/share/doc/*" 
+    - "{{ prefix }}/share/man/man1/*" 
+    - "{{ prefix }}/share/man/man3/*" 
+  rpm:
+    extras:
+      - "%define __arch_install_post %{nil}"
+      - "%define __os_install_post %{nil}"

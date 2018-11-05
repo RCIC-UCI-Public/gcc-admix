@@ -1,0 +1,28 @@
+---
+- package: isl update for gcc {{ gcc_version }} 
+  name: isl 
+  version: "{{ pkg_defaults.isl_version }}" 
+  extension: tar.gz
+  vendor_source: http://mirrors.kernel.org/gnu/isl/isl-{{ version }}.{{ extension }}
+  pkgname: "{{ name }}_gcc_{{ gcc_version }}"
+  gcc_version: "{{ pkg_defaults.gcc_version }}"
+  description: isl {{ version }} update for GCC {{ gcc_version }}
+  root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
+  prefix: "{{ root }}" 
+  build:
+    configure_args: --disable-nls
+    modules: gcc/{{ gcc_version }}
+    target: 
+  install:
+    makeinstall: $(MAKE) DESTDIR=$(ROOT) install
+    installextra: >
+      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }};
+      /bin/rm $(ROOT)/{{ prefix }}/share/info/dir
+  files:
+    - "{{ prefix }}/R*" 
+    - "{{ prefix }}/include/*" 
+    - "{{ prefix }}/lib/*" 
+    - "{{ prefix }}/lib/pkgconfig/*" 
+  requires: "gcc_{{ gcc_version }}"
+  buildrequires: "gcc_{{ gcc_version }}"
+
