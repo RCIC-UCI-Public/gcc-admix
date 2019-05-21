@@ -1,11 +1,12 @@
 ---
 - package: libiconv update for gcc {{ gcc_version }} 
   name: libiconv 
-  version: "{{ pkg_defaults.libiconv_version }}" 
+  versions: !include gcc-versions.yaml
+  version: "{{ versions.libiconv }}" 
+  gcc_version: "{{ versions.gcc }}"
   extension: tar.gz
   vendor_source: http://mirrors.kernel.org/gnu/libiconv/libiconv-{{ version }}.tar.gz 
   pkgname: "{{ name }}_gcc_{{ gcc_version }}"
-  gcc_version: "{{ pkg_defaults.gcc_version }}"
   description: libiconv {{ version }} update for GCC {{ gcc_version }}
   root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
   prefix: "{{ root }}" 
@@ -25,9 +26,8 @@
     - "{{ prefix }}/share/doc/*" 
     - "{{ prefix }}/share/man/man1/*" 
     - "{{ prefix }}/share/man/man3/*" 
-  rpm:
-    extras:
-      - "%define __arch_install_post %{nil}"
-      - "%define __os_install_post %{nil}"
+
+  rpm: !include rpm.extras.yaml
+
   requires:
       - gcc_{{ gcc_version }}

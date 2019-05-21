@@ -1,11 +1,12 @@
 ---
 - package: mpfr update for gcc {{ gcc_version }} 
   name: mpfr 
-  version: "{{ pkg_defaults.mpfr_version }}" 
+  versions: !include gcc-versions.yaml
+  version: "{{ versions.mpfr }}" 
+  gcc_version: "{{ versions.gcc }}"
   extension: tar.xz
   vendor_source: http://mirrors.kernel.org/gnu/mpfr/mpfr-{{ version }}.tar.xz 
   pkgname: "{{ name }}_gcc_{{ gcc_version }}"
-  gcc_version: "{{ pkg_defaults.gcc_version }}"
   description: mpfr {{ version }} update for GCC {{ gcc_version }}
   root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
   prefix: "{{ root }}" 
@@ -24,6 +25,10 @@
     - "{{ prefix }}/lib/*" 
     - "{{ prefix }}/share/doc/*" 
     - "{{ prefix }}/share/info/*" 
+
+  rpm: !include rpm.extras.yaml
+
   requires: "gcc_{{ gcc_version }}"
+
   buildrequires: "gcc_{{ gcc_version }}"
 

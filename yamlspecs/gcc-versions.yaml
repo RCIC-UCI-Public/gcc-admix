@@ -1,0 +1,8 @@
+## Versions used to compile gcc 6.5.0
+gcc: "6.5.0"
+binutils: "2.31"
+gmp: "6.1.2"
+isl: "0.20" 
+libiconv: "1.15" 
+mpc: "1.1.0" 
+mpfr: "4.0.1" 

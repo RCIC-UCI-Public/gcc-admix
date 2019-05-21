@@ -1,11 +1,12 @@
 ---
 - package: gmp update for gcc {{ gcc_version }} 
   name: gmp 
-  version: "{{ pkg_defaults.gmp_version }}" 
+  versions: !include gcc-versions.yaml
+  version: "{{ versions.gmp }}" 
+  gcc_version: "{{ versions.gcc }}"
   extension: tar.xz
   vendor_source: http://mirrors.kernel.org/gnu/gmp/gmp-{{ version }}.tar.xz 
   pkgname: "{{ name }}_gcc_{{ gcc_version }}"
-  gcc_version: "{{ pkg_defaults.gcc_version }}"
   description: gmp {{ version }} update for GCC {{ gcc_version }}
   root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
   prefix: "{{ root }}" 
@@ -23,6 +24,9 @@
     - "{{ prefix }}/include/*" 
     - "{{ prefix }}/lib/*" 
     - "{{ prefix }}/share/info/*" 
-  requires: "gcc_{{ gcc_version }}"
+  requires: 
+    - "gcc_{{ gcc_version }}"
+  rpm: !include rpm.extras.yaml
+
   buildrequires: "gcc_{{ gcc_version }}"
 
