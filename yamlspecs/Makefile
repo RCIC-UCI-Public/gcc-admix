@@ -2,5 +2,17 @@
 # All rights reserved.	
 # This includes the Generic yaml2rpm Makefile - most packaging should
 # be able to use this.
-
-include $(YAML2RPM_HOME)/sys/Makefile
+SUBMAKES = Makefile6 Makefile8
+.DEFAULT_GOAL = default
+%.pkg:
+	for f in $(SUBMAKES); do \
+		if [ -f $@ ] ; then /bin/rm $@; fi; \
+		$(MAKE) -f $$f $@; \
+        done
+	
+%: 	
+	$(MAKE) -f Makefile6 $*
+	$(MAKE) -f Makefile6 clean
+	$(MAKE) -f Makefile8 $*
+	
+	

@@ -9,14 +9,15 @@
   pkgname: "{{ name }}_{{ version }}"
   gcc_version: "{{ versions.gcc }}"
   gmp_version: "{{ versions.gmp }}"
+  isl_version: "{{ versions.isl}}"
   libiconv_version: "{{ versions.libiconv }}"
   mpc_version: "{{ versions.mpc }}"
   mpfr_version: "{{ versions.mpfr }}"
 
   description: >
-    GCC/G++/GO/GFORTRAN/OBJC/OBJC++/JAVA {{ gcc_version }}, gmp version {{ gmp_version }}
+    GCC/G++/GO/GFORTRAN/OBJC/OBJC++ {{ gcc_version }}, gmp version {{ gmp_version }}
     mpc version {{ mpc_version }}, libiconv version {{ libiconv_version }}
-    mpfr version {{ mpfr_version }}
+    mpfr version {{ mpfr_version }}, isl version {{ isl_version }}
   root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
   prefix: "{{ root }}" 
   builddir: gcc-build
@@ -24,6 +25,7 @@
   # sources need to be added and unpacked so that gcc builds will use these versions
   addsource: 
      - gmp-{{ gmp_version }}.tar.xz  
+     - isl-{{ isl_version }}.tar.xz  
      - mpc-{{ mpc_version }}.tar.gz 
      - libiconv-{{ libiconv_version }}.tar.gz
      - mpfr-{{ mpfr_version }}.tar.xz  
@@ -37,12 +39,13 @@
       mv libiconv-{{ libiconv_version }} libiconv; 
       zcat ../mpc-{{ mpc_version }}.tar.gz |  $(TAR) xf -; mv mpc-{{ mpc_version }} mpc; 
       xzcat ../mpfr-{{ mpfr_version }}.tar.xz | $(TAR) xf -; mv mpfr-{{ mpfr_version }} mpfr; 
+      xzcat ../isl-{{ isl_version }}.tar.xz | $(TAR) xf -; mv isl-{{ isl_version }} isl; 
       mkdir ../{{ builddir }} 
 
     # build c, c++, go, objc, obj-c++,fortran, java
     configure: cd ../{{ builddir }}; ../gcc-{{ gcc_version }}/configure
     configure_args: >
-      --disable-nls --enable-languages=c,c++,go,objc,obj-c++,fortran,java 
+      --disable-nls --enable-languages=c,c++,go,objc,obj-c++,fortran 
       --enable-threads=posix
       --prefix={{ prefix }}
     modules: 

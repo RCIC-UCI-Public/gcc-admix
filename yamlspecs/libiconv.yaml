@@ -11,11 +11,12 @@
   root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
   prefix: "{{ root }}" 
   build:
+    patchfile: "{{ name }}-{{ version }}.patch"
     configure_args: --disable-nls
     modules: gcc/{{ gcc_version }}
     target: 
   install:
-    makeinstall: $(MAKE) DESTDIR=$(ROOT) install
+    makeinstall: $(MAKE) PREFIX={{ prefix }} DESTDIR=$(ROOT) install
     installextra: >
       $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }}
   files:

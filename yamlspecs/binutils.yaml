@@ -1,5 +1,5 @@
 ---
-- package: binutils update for gcc 6.5.0
+- package: binutils update for gcc 
   name: binutils 
   versions: !include gcc-versions.yaml
   version:  "{{ versions.binutils }}" 

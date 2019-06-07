@@ -4,8 +4,8 @@
   versions: !include gcc-versions.yaml
   version: "{{ versions.isl }}" 
   gcc_version: "{{ versions.gcc }}"
-  extension: tar.gz
-  vendor_source: http://mirrors.kernel.org/gnu/isl/isl-{{ version }}.{{ extension }}
+  extension: tar.xz
+  vendor_source: http://isl.gforge.inria.fr/isl-{{ version }}.tar.xz 
   pkgname: "{{ name }}_gcc_{{ gcc_version }}"
   description: isl {{ version }} update for GCC {{ gcc_version }}
   root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
