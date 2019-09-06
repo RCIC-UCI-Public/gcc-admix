@@ -57,3 +57,5 @@
 
   files:
     - "{{ prefix }}" 
+  requires:
+    - "{{ name }}_{{version}}-binutils"

@@ -6,7 +6,7 @@
   gcc_version: "{{ versions.gcc }}"
   extension: tar.gz
   vendor_source: http://mirrors.kernel.org/gnu/libiconv/libiconv-{{ version }}.tar.gz 
-  pkgname: "{{ name }}_gcc_{{ gcc_version }}"
+  pkgname: gcc_{{ gcc_version }}-{{name}} 
   description: libiconv {{ version }} update for GCC {{ gcc_version }}
   root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
   prefix: "{{ root }}" 
