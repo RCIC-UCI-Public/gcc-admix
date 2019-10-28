@@ -10,6 +10,9 @@ SUBMAKES = Makefile6 Makefile8
 		$(MAKE) -f $$f $@; \
         done
 	
+manifest:
+	$(MAKE) -s -f Makefile6 manifest
+	$(MAKE) -s -f Makefile8 manifest
 %: 	
 	$(MAKE) -f Makefile6 $*
 	$(MAKE) -f Makefile6 clean

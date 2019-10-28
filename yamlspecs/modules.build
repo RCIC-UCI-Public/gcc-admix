@@ -1,7 +1,0 @@
-# Modules to build. Order is NOT important
-binutils
-gcc
-gmp
-libiconv
-mpc
-mpfr

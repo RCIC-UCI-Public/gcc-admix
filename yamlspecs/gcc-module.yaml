@@ -5,11 +5,14 @@
 ---
 - package: GCC Module
   pkgname: "{{ name }}_{{version}}-module"
+  src_tarball: None
+  no_src_dir: True
+  category: compilers
 
   ## Define the key components of the environment module
   module:
     name: "{{ version }}"
-    path: "{{ pkg_defaults.module.path }}/{{ name }}"
+    path: "{{ pkg_defaults.module.RCICmpath }}/{{ category }}/{{ name }}"
     setenv:
       - GCC_INSTALL_PREFIX  {{ prefix }}
       - CPP  {{ prefix }}/bin/cpp

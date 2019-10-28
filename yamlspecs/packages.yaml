@@ -1,0 +1,30 @@
+# System RPMS required to build this admix
+system:
+   - glibc-devel.i686
+   - libgcc.i686
+   - libstdc++-devel.i686 
+   - ncurses-devel.i686
+   - bison
+   - flex
+   - gmp-devel
+   - libmpc-devel
+   - libmpfr-devel
+   - texinfo
+
+# Modules to build AND install locally. Order IS important
+bootstrap:
+   - binutils
+   - gcc
+   - gcc-module
+
+# Modules to build. Order is NOT important
+build:
+   - "{{ bootstrap }}"
+   - gmp
+   - libiconv
+   - mpc
+   - mpfr
+
+# What to install (usual case)
+manifest:
+   - "{{ build }}" 

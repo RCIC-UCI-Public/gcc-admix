@@ -18,7 +18,7 @@
     GCC/G++/GO/GFORTRAN/OBJC/OBJC++ {{ gcc_version }}, gmp version {{ gmp_version }}
     mpc version {{ mpc_version }}, libiconv version {{ libiconv_version }}
     mpfr version {{ mpfr_version }}, isl version {{ isl_version }}
-  root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
+  root: "{{ pkg_defaults.app_path }}/gcc/{{ gcc_version }}"
   prefix: "{{ root }}" 
   builddir: gcc-build
 
