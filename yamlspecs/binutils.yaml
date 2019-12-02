@@ -2,7 +2,6 @@
 !include binutils-bootstrap.yaml
 ---
   pkgname: gcc_{{ gcc_version }}-{{name}}
-  release: 2
   obsoletes: "{{pkgname}}-bootstrap"
   build:
     modules: 
@@ -10,12 +9,3 @@
   requires:
     - gcc_{{gcc_version}}
   rpm: !include rpm.extras.yaml
-#     extras: |
-#       Obsoletes: {{pkgname}}-bootstrap\n\
-#       %define __spec_install_post \
-#       %{?__debug_package:%{__debug_install_post}}\
-#       module load {{ build.modules }};\
-#       %{__arch_install_post}\
-#       %{__os_install_post}\
-#       module unload {{ build.modules }}\
-#       %{nil} 
