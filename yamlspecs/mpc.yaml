@@ -5,10 +5,11 @@
   version: "{{ versions.mpc }}" 
   gcc_version: "{{ versions.gcc }}"
   extension: tar.gz
+  release: 2
   vendor_source: http://mirrors.kernel.org/gnu/mpc/mpc-{{ version }}.{{ extension }}
   pkgname: gcc_{{ gcc_version }}-{{name}} 
   description: mpc {{ version }} update for GCC {{ gcc_version }}
-  root: "{{ pkg_defaults.foundation }}/gcc/{{ gcc_version }}"
+  root: "{{ pkg_defaults.app_path}}/gcc/{{ gcc_version }}"
   prefix: "{{ root }}" 
   build:
     configure_args: --disable-nls

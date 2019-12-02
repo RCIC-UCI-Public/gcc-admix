@@ -1,0 +1,36 @@
+---
+# This is the bootstrap version of binutils, built with the system gcc. 
+# it is rebuilt using the new gcc in its final form 
+- package: binutils update for gcc 
+  name: binutils 
+  release: 2
+  versions: !include gcc-versions.yaml
+  version:  "{{ versions.binutils }}" 
+  gcc_version: "{{ versions.gcc }}"
+  extension: tar.gz
+  vendor_source: http://mirrors.kernel.org/gnu/binutils/binutils-{{ version }}.tar.gz 
+  pkgname: gcc_{{ gcc_version }}-{{name}}-bootstrap 
+  description: Binutils {{ version }} update for GCC {{ gcc_version }}
+  root: "{{ pkg_defaults.app_path}}/gcc/{{ gcc_version }}"
+  prefix: "{{ root }}" 
+  build:
+    configure: ./configure
+    configure_args: --disable-nls --disable-werror --prefix={{ prefix }}
+    modules: 
+    target: 
+  install:
+    makeinstall: $(MAKE) prefix=$(ROOT)/{{ prefix }} install 
+    installextra: >
+      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }}; 
+      /bin/rm $(ROOT)/{{ prefix }}/share/info/dir
+  files:
+    - "{{ prefix }}/R*" 
+    - "{{ prefix }}/bin/*" 
+    - "{{ prefix }}/include/*" 
+    - "{{ prefix }}/lib/lib*" 
+    - "{{ prefix }}/x86_64-pc-linux-gnu/bin/*"
+    - "{{ prefix }}/x86_64-pc-linux-gnu/lib/*"
+    - "{{ prefix }}/share/info/*" 
+    - "{{ prefix }}/share/man/man1/*" 
+  provides:
+    - GCC_{{gcc_version}}-BINUTILS

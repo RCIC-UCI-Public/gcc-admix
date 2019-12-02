@@ -4,6 +4,7 @@
   versions: !include gcc-versions.yaml
   version: "{{ versions.gcc }}" 
   extension: tar.gz
+  release: 2
 
   vendor_source: http://mirrors.kernel.org/gnu/gcc/gcc-{{ gcc_version }}/gcc-{{gcc_version}}.tar.gz
   pkgname: "{{ name }}_{{ version }}"
@@ -56,6 +57,6 @@
     installextra: cd ../{{ builddir }}; $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }}
 
   files:
-    - "{{ prefix }}" 
+    - "{{ pkg_defaults.app_path }}/gcc"
   requires:
-    - "{{ name }}_{{version}}-binutils"
+    - GCC_{{ gcc_version }}-BINUTILS

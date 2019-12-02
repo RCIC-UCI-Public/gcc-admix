@@ -13,13 +13,15 @@ system:
 
 # Modules to build AND install locally. Order IS important
 bootstrap:
-   - binutils
+   - binutils-bootstrap
    - gcc
    - gcc-module
-
+   - binutils
 # Modules to build. Order is NOT important
 build:
-   - "{{ bootstrap }}"
+   - binutils
+   - gcc
+   - gcc-module 
    - gmp
    - libiconv
    - mpc
