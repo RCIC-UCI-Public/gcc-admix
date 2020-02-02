@@ -1,62 +1,62 @@
+#!include gcc-versions.yaml
 ---
-- package: gcc/g++/go {{ gcc_version }} 
+- package: gcc/g++/go {{gcc_version}} 
   name: gcc
   versions: !include gcc-versions.yaml
-  version: "{{ versions.gcc }}" 
+  version: "{{versions.gcc}}" 
   extension: tar.gz
   release: 2
 
-  vendor_source: http://mirrors.kernel.org/gnu/gcc/gcc-{{ gcc_version }}/gcc-{{gcc_version}}.tar.gz
-  pkgname: "{{ name }}_{{ version }}"
-  gcc_version: "{{ versions.gcc }}"
-  gmp_version: "{{ versions.gmp }}"
-  isl_version: "{{ versions.isl}}"
-  libiconv_version: "{{ versions.libiconv }}"
-  mpc_version: "{{ versions.mpc }}"
-  mpfr_version: "{{ versions.mpfr }}"
+  vendor_source: http://mirrors.kernel.org/gnu/gcc/gcc-{{gcc_version}}/gcc-{{gcc_version}}.tar.gz
+  pkgname: "{{name}}_{{version}}"
+  gcc_version: "{{versions.gcc}}"
+  gmp_version: "{{versions.gmp}}"
+  isl_version: "{{versions.isl}}"
+  libiconv_version: "{{versions.libiconv}}"
+  mpc_version: "{{versions.mpc}}"
+  mpfr_version: "{{versions.mpfr}}"
 
-  description: >
-    GCC/G++/GO/GFORTRAN/OBJC/OBJC++ {{ gcc_version }}, gmp version {{ gmp_version }}
-    mpc version {{ mpc_version }}, libiconv version {{ libiconv_version }}
-    mpfr version {{ mpfr_version }}, isl version {{ isl_version }}
-  root: "{{ pkg_defaults.app_path }}/gcc/{{ gcc_version }}"
-  prefix: "{{ root }}" 
+  description: |
+    GCC/G++/GO/GFORTRAN/OBJC/OBJC++ {{gcc_version}}, gmp v.{{gmp_version}},
+    mpc v.{{mpc_version}}, libiconv v.{{libiconv_version}} mpfr v.{{mpfr_version}}, isl v.{{isl_version}}
+  root: "{{pkg_defaults.app_path}}/gcc/{{gcc_version}}"
+  prefix: "{{root}}" 
   builddir: gcc-build
 
   # sources need to be added and unpacked so that gcc builds will use these versions
   addsource: 
-     - gmp-{{ gmp_version }}.tar.xz  
-     - isl-{{ isl_version }}.tar.xz  
-     - mpc-{{ mpc_version }}.tar.gz 
-     - libiconv-{{ libiconv_version }}.tar.gz
-     - mpfr-{{ mpfr_version }}.tar.xz  
+     - gmp-{{gmp_version}}.tar.xz  
+     - isl-{{isl_version}}.tar.xz  
+     - mpc-{{mpc_version}}.tar.gz 
+     - libiconv-{{libiconv_version}}.tar.gz
+     - mpfr-{{mpfr_version}}.tar.xz  
 
   build:
     # Build with gmp,mcp,libiconv,mpfr
     # Build instructions for GCC "unpack tarballs and place in tree"
     preconfigure: >
-      xzcat ../gmp-{{ gmp_version }}.tar.xz | $(TAR) xf - ; mv gmp-{{ gmp_version }} gmp; 
-      zcat ../libiconv-{{ libiconv_version }}.tar.gz | $(TAR) xf -; 
-      mv libiconv-{{ libiconv_version }} libiconv; 
-      zcat ../mpc-{{ mpc_version }}.tar.gz |  $(TAR) xf -; mv mpc-{{ mpc_version }} mpc; 
-      xzcat ../mpfr-{{ mpfr_version }}.tar.xz | $(TAR) xf -; mv mpfr-{{ mpfr_version }} mpfr; 
-      xzcat ../isl-{{ isl_version }}.tar.xz | $(TAR) xf -; mv isl-{{ isl_version }} isl; 
-      mkdir ../{{ builddir }} 
+      xzcat ../gmp-{{gmp_version}}.tar.xz | $(TAR) xf - ; mv gmp-{{gmp_version}} gmp; 
+      zcat ../libiconv-{{libiconv_version}}.tar.gz | $(TAR) xf -; 
+      mv libiconv-{{libiconv_version}} libiconv; 
+      zcat ../mpc-{{mpc_version}}.tar.gz |  $(TAR) xf -; mv mpc-{{mpc_version}} mpc; 
+      xzcat ../mpfr-{{mpfr_version}}.tar.xz | $(TAR) xf -; mv mpfr-{{mpfr_version}} mpfr; 
+      xzcat ../isl-{{isl_version}}.tar.xz | $(TAR) xf -; mv isl-{{isl_version}} isl; 
+      mkdir ../{{builddir}} 
 
     # build c, c++, go, objc, obj-c++,fortran, java
-    configure: cd ../{{ builddir }}; ../gcc-{{ gcc_version }}/configure
+    configure: cd ../{{builddir}}; ../gcc-{{gcc_version}}/configure
     configure_args: >
       --disable-nls --enable-languages=c,c++,go,objc,obj-c++,fortran 
       --enable-threads=posix
-      --prefix={{ prefix }}
+      --prefix={{prefix}}
     modules: 
     target: 
 
   install:
-    makeinstall: cd ../{{ builddir }}; $(MAKE) prefix=$(ROOT)/{{ prefix }} install 
-    installextra: cd ../{{ builddir }}; $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }}
+    makeinstall: cd ../{{builddir}}; $(MAKE) prefix=$(ROOT)/{{prefix}} install 
+    installextra: cd ../{{builddir}}; $(INSTALL) -m 644  README $(ROOT)/{{prefix}}/README.{{name}}
 
   files:
-    - "{{ pkg_defaults.app_path }}/gcc"
+    - "{{pkg_defaults.app_path}}/gcc"
   requires:
-    - GCC_{{ gcc_version }}-BINUTILS
+    - GCC_{{gcc_version}}-BINUTILS
