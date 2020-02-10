@@ -19,9 +19,6 @@ bootstrap:
    - binutils
 # Modules to build. Order is NOT important
 build:
-   - binutils
-   - gcc
-   - gcc-module 
    - gmp
    - libiconv
    - mpc
@@ -29,4 +26,7 @@ build:
 
 # What to install (usual case)
 manifest:
+   - gcc
+   - gcc-module
+   - binutils
    - "{{ build }}" 
