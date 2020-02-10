@@ -4,3 +4,5 @@
 # be able to use this.
 
 include $(YAML2RPM_HOME)/sys/Makefile
+clean:
+	-/bin/rm gcc.pkg gcc-module.pkg binutils.pkg
