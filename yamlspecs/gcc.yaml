@@ -49,6 +49,7 @@
       --disable-nls --enable-languages=c,c++,go,objc,obj-c++,fortran 
       --enable-threads=posix
       --prefix={{prefix}}
+    pkgmake: make -j 8
     modules: 
     target: 
 
