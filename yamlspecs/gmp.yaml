@@ -1,33 +1,7 @@
+!include common.yaml
 ---
-- package: gmp update for gcc {{ gcc_version }} 
+- package: gmp update for gcc {{gcc_version}} 
   name: gmp 
-  versions: !include gcc-versions.yaml
-  version: "{{ versions.gmp }}" 
-  gcc_version: "{{ versions.gcc }}"
-  extension: tar.xz
-  release: 2
-  vendor_source: http://mirrors.kernel.org/gnu/gmp/gmp-{{ version }}.tar.xz 
-  pkgname: gcc_{{ gcc_version }}-{{name}} 
-  description: gmp {{ version }} update for GCC {{ gcc_version }}
-  root: "{{ pkg_defaults.app_path }}/gcc/{{ gcc_version }}"
-  prefix: "{{ root }}" 
-  build:
-    configure_args: --disable-nls
-    modules: gcc/{{ gcc_version }}
-    target: 
-  install:
-    makeinstall: $(MAKE) DESTDIR=$(ROOT) install
-    installextra: >
-      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }};
-      /bin/rm $(ROOT)/{{ prefix }}/share/info/dir
-  files:
-    - "{{ prefix }}/R*" 
-    - "{{ prefix }}/include/*" 
-    - "{{ prefix }}/lib/*" 
-    - "{{ prefix }}/share/info/*" 
-  requires: 
-    - "gcc_{{ gcc_version }}"
-  rpm: !include rpm.extras.yaml
-
-  buildrequires: "gcc_{{ gcc_version }}"
-
+  version: "{{versions.gmp}}" 
+  vendor_source: http://mirrors.kernel.org/gnu/gmp/gmp-{{version}}.tar.xz 
+  description: gmp {{version}} update for GCC {{gcc_version}}

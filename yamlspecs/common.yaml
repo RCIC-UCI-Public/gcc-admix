@@ -1,0 +1,22 @@
+!include rcic-package.yaml
+---
+- baserpm: gcc_{{gcc_version}}-{{name}} 
+  versions: !include gcc-versions.yaml
+  gcc_version: "{{versions.gcc}}"
+  extension: tar.xz
+  release: 2
+  parent: "{{pkg_defaults.app_path}}/gcc" 
+  root: "{{parent}}/{{gcc_version}}"
+  build:
+    configure_args: --disable-nls
+    modules: gcc/{{gcc_version}}
+    target: 
+  install:
+    makeinstall: $(MAKE) DESTDIR=$(ROOT) install
+    installextra: >
+      $(INSTALL) -m 644  README $(ROOT){{root}}/README.{{name}};
+      /bin/rm $(ROOT)/{{root}}/share/info/dir
+  requires: 
+    - "gcc_{{gcc_version}}"
+  rpm: !include rpm.extras.yaml
+  buildrequires: "gcc_{{gcc_version}}"

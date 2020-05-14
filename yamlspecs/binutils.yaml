@@ -1,8 +1,8 @@
 # This is the final version of binutils, built with the proper version of gcc 
 !include binutils-bootstrap.yaml
 ---
-  pkgname: gcc_{{ gcc_version }}-{{name}}
-  obsoletes: "{{pkgname}}-bootstrap"
+  baserpm: gcc_{{gcc_version}}-{{name}}
+  obsoletes: "{{baserpm}}-bootstrap"
   build:
     modules: 
       - gcc/{{gcc_version}}

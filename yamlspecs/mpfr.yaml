@@ -1,35 +1,8 @@
+!include common.yaml
 ---
-- package: mpfr update for gcc {{ gcc_version }} 
+- package: mpfr update for gcc {{gcc_version}} 
   name: mpfr 
   versions: !include gcc-versions.yaml
-  version: "{{ versions.mpfr }}" 
-  gcc_version: "{{ versions.gcc }}"
-  extension: tar.xz
-  release: 2
-  vendor_source: http://mirrors.kernel.org/gnu/mpfr/mpfr-{{ version }}.tar.xz 
-  pkgname: gcc_{{ gcc_version }}-{{name}} 
-  description: mpfr {{ version }} update for GCC {{ gcc_version }}
-  root: "{{ pkg_defaults.app_path }}/gcc/{{ gcc_version }}"
-  prefix: "{{ root }}" 
-  build:
-    configure_args: --disable-nls
-    modules: gcc/{{ gcc_version }}
-    target: 
-  install:
-    makeinstall: $(MAKE) DESTDIR=$(ROOT) install
-    installextra: >
-      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }};
-      /bin/rm $(ROOT)/{{ prefix }}/share/info/dir
-  files:
-    - "{{ prefix }}/R*" 
-    - "{{ prefix }}/include/*" 
-    - "{{ prefix }}/lib/*" 
-    - "{{ prefix }}/share/doc/*" 
-    - "{{ prefix }}/share/info/*" 
-
-  rpm: !include rpm.extras.yaml
-
-  requires: "gcc_{{ gcc_version }}"
-
-  buildrequires: "gcc_{{ gcc_version }}"
-
+  version: "{{versions.mpfr}}" 
+  vendor_source: http://mirrors.kernel.org/gnu/mpfr/mpfr-{{version}}.tar.xz 
+  description: mpfr {{version}} update for GCC {{gcc_version}}
