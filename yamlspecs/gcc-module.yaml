@@ -7,10 +7,10 @@
   src_tarball: None
   no_src_dir: True
   category: COMPILERS
+  release: 3
   module:
     lib: lib64
     setenv:
-      - "{{mod_defaults.setenv}}"
       - GCC_INSTALL_PREFIX {{prefix}}
       - CPP {{prefix}}/bin/cpp
       - CC {{prefix}}/bin/gcc
@@ -21,6 +21,13 @@
       - F77 {{prefix}}/bin/gfortran
       - F90 {{prefix}}/bin/gfortran
     prepend_path:
-      - "{{mod_defaults.prepend_path}}"
-      - "{{mod_defaults.flagspath}}"
+      - PATH {{root}}/bin
+      - MANPATH {{root}}/share/man
+      - PKG_CONFIG_PATH {{root}}/{{module.lib}}/pkgconfig
       - LD_LIBRARY_PATH {{prefix}}/lib/gcc/x86_64-pc-linux-gnu/{{gcc_version}}
+      - LD_LIBRARY_PATH {{prefix}}/lib
+      - LD_LIBRARY_PATH {{root}}/{{module.lib}}
+      - -d " " CPPFLAGS -I{{root}}/include
+      - -d " " LDFLAGS "-L{{prefix}}/lib/gcc/x86_64-pc-linux-gnu/{{gcc_version}} -Wl,-rpath,{{prefix}}/lib/gcc/x86_64-pc-linux-gnu/{{gcc_version}}"
+      - -d " " LDFLAGS "-L{{prefix}}/lib -Wl,-rpath,{{prefix}}/lib"
+      - -d " " LDFLAGS "-L{{root}}/{{module.lib}} -Wl,-rpath,{{root}}/{{module.lib}}"
