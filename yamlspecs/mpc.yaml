@@ -1,33 +1,8 @@
+!include common.yaml
 ---
-- package: mpc update for gcc {{ gcc_version }} 
+- package: mpc update for gcc {{gcc_version}} 
   name: mpc 
-  versions: !include gcc-versions.yaml
-  version: "{{ versions.mpc }}" 
-  gcc_version: "{{ versions.gcc }}"
+  version: "{{versions.mpc}}" 
   extension: tar.gz
-  release: 2
-  vendor_source: http://mirrors.kernel.org/gnu/mpc/mpc-{{ version }}.{{ extension }}
-  pkgname: gcc_{{ gcc_version }}-{{name}} 
-  description: mpc {{ version }} update for GCC {{ gcc_version }}
-  root: "{{ pkg_defaults.app_path}}/gcc/{{ gcc_version }}"
-  prefix: "{{ root }}" 
-  build:
-    configure_args: --disable-nls
-    modules: gcc/{{ gcc_version }}
-    target: 
-  install:
-    makeinstall: $(MAKE) DESTDIR=$(ROOT) install
-    installextra: >
-      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }};
-      /bin/rm $(ROOT)/{{ prefix }}/share/info/dir
-  files:
-    - "{{ prefix }}/R*" 
-    - "{{ prefix }}/include/*" 
-    - "{{ prefix }}/lib/*" 
-    - "{{ prefix }}/share/info/*" 
-
-  rpm: !include rpm.extras.yaml
-  requires: 
-    - "gcc_{{ gcc_version }}"
-  buildrequires: "gcc_{{ gcc_version }}"
-
+  vendor_source: http://mirrors.kernel.org/gnu/mpc/mpc-{{version}}.{{extension}}
+  description: mpc {{version}} update for GCC {{gcc_version}}

@@ -1,34 +1,7 @@
+!include common.yaml
 ---
-- package: isl update for gcc {{ gcc_version }} 
+- package: isl update for gcc {{gcc_version}} 
   name: isl 
-  versions: !include gcc-versions.yaml
-  version: "{{ versions.isl }}" 
-  gcc_version: "{{ versions.gcc }}"
-  extension: tar.xz
-  release: 2
-  vendor_source: http://isl.gforge.inria.fr/isl-{{ version }}.tar.xz 
-  pkgname: gcc_{{ gcc_version }}-{{name}} 
-  description: isl {{ version }} update for GCC {{ gcc_version }}
-  root: "{{ pkg_defaults.app_path }}/gcc/{{ gcc_version }}"
-  prefix: "{{ root }}" 
-  build:
-    configure_args: --disable-nls
-    modules: gcc/{{ gcc_version }}
-    target: 
-  install:
-    makeinstall: $(MAKE) DESTDIR=$(ROOT) install
-    installextra: >
-      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }};
-      /bin/rm $(ROOT)/{{ prefix }}/share/info/dir
-  files:
-    - "{{ prefix }}/R*" 
-    - "{{ prefix }}/include/*" 
-    - "{{ prefix }}/lib/*" 
-    - "{{ prefix }}/lib/pkgconfig/*" 
-
-  rpm: !include rpm.extras.yaml
-  requires: 
-    - "gcc_{{ gcc_version }}-module"
-
-  buildrequires: "gcc_{{ gcc_version }}"
-
+  version: "{{versions.isl}}" 
+  vendor_source: http://isl.gforge.inria.fr/isl-{{version}}.tar.xz 
+  description: isl {{version}} update for GCC {{gcc_version}}

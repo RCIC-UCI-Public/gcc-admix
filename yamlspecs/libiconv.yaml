@@ -1,35 +1,10 @@
+!include common.yaml
 ---
-- package: libiconv update for gcc {{ gcc_version }} 
+- package: libiconv update for gcc {{gcc_version}} 
   name: libiconv 
-  versions: !include gcc-versions.yaml
-  version: "{{ versions.libiconv }}" 
-  gcc_version: "{{ versions.gcc }}"
   extension: tar.gz
-  release: 2
-  vendor_source: http://mirrors.kernel.org/gnu/libiconv/libiconv-{{ version }}.tar.gz 
-  pkgname: gcc_{{ gcc_version }}-{{name}} 
-  description: libiconv {{ version }} update for GCC {{ gcc_version }}
-  root: "{{ pkg_defaults.app_path }}/gcc/{{ gcc_version }}"
-  prefix: "{{ root }}" 
+  version: "{{versions.libiconv}}" 
+  vendor_source: http://mirrors.kernel.org/gnu/libiconv/libiconv-{{version}}.tar.gz 
+  description: libiconv {{version}} update for GCC {{gcc_version}}
   build:
-    patchfile: "{{ name }}-{{ version }}.patch"
-    configure_args: --disable-nls
-    modules: gcc/{{ gcc_version }}
-    target: 
-  install:
-    makeinstall: $(MAKE) PREFIX={{ prefix }} DESTDIR=$(ROOT) install
-    installextra: >
-      $(INSTALL) -m 644  README $(ROOT)/{{ prefix}}/README.{{ name }}
-  files:
-    - "{{ prefix }}/R*" 
-    - "{{ prefix }}/bin/*" 
-    - "{{ prefix }}/include/*" 
-    - "{{ prefix }}/lib/*" 
-    - "{{ prefix }}/share/doc/*" 
-    - "{{ prefix }}/share/man/man1/*" 
-    - "{{ prefix }}/share/man/man3/*" 
-
-  rpm: !include rpm.extras.yaml
-
-  requires:
-      - gcc_{{ gcc_version }}
+    patchfile: "{{name}}-{{version}}.patch"

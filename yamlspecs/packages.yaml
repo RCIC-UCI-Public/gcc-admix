@@ -10,7 +10,6 @@ system:
    - libmpc-devel
    - libmpfr-devel
    - texinfo
-
 # Modules to build AND install locally. Order IS important
 bootstrap:
    - binutils-bootstrap
@@ -23,10 +22,9 @@ build:
    - libiconv
    - mpc
    - mpfr
-
 # What to install (usual case)
 manifest:
    - gcc
    - gcc-module
    - binutils
-   - "{{ build }}" 
+   - "{{build}}" 
