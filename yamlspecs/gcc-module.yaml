@@ -6,7 +6,6 @@
   category: COMPILERS
   release: 3
   module:
-    <<: *Module
     lib: lib64
     setenv:
       - GCC_INSTALL_PREFIX {{root}}
