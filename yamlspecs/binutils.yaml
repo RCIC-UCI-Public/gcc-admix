@@ -6,6 +6,7 @@
   build:
     modules: 
       - gcc/{{gcc_version}}
+    configure: CFLAGS=-fPIC ./configure
   requires:
     - gcc_{{gcc_version}}
   rpm: !include rpm.extras.yaml
