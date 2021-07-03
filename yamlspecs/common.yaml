@@ -10,7 +10,6 @@
   build:
     configure_args: --disable-nls
     modules: gcc/{{gcc_version}}
-    target: 
   install:
     makeinstall: $(MAKE) DESTDIR=$(ROOT) install
     installextra: >

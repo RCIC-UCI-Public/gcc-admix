@@ -42,8 +42,6 @@
       --enable-threads=posix
       --prefix={{root}}
     pkgmake: make -j 8
-    modules: 
-    target: 
   install:
     makeinstall: cd ../{{builddir}}; $(MAKE) prefix=$(ROOT)/{{root}} install 
     installextra: cd ../{{builddir}}; $(INSTALL) -m 644  README $(ROOT)/{{root}}/README.{{name}}

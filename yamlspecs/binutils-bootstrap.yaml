@@ -16,8 +16,6 @@
   build:
     configure: ./configure
     configure_args: --disable-nls --disable-werror --prefix={{root}}
-    modules: 
-    target: 
   install:
     makeinstall: $(MAKE) prefix=$(ROOT)/{{root}} install 
     installextra: >
