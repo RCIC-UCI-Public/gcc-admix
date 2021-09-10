@@ -28,3 +28,5 @@ manifest:
    - gcc-module
    - binutils
    - "{{build}}" 
+sets:
+   - gcc8

@@ -1,8 +1,8 @@
-## Versions used to compile gcc 8.4.0 
-gcc: "8.4.0"
+## Baseline versions for gcc
+gcc: "6.5.0"
 binutils: "2.31"
 gmp: "6.1.2"
 isl: "0.21" 
 libiconv: "1.16" 
 mpc: "1.1.0" 
-mpfr: "4.0.2" 
+mpfr: "4.0.1" 

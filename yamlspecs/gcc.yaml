@@ -2,7 +2,7 @@
 ---
 - package: gcc/g++/go {{gcc_version}} 
   name: gcc
-  versions: !include gcc-versions.yaml
+  versions: !include versions.yaml
   version: "{{versions.gcc}}" 
   release: 2
   vendor_source: http://mirrors.kernel.org/gnu/gcc/gcc-{{gcc_version}}/gcc-{{gcc_version}}.tar.gz

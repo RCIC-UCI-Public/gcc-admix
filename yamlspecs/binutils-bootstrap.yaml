@@ -5,7 +5,7 @@
 - package: binutils update for gcc 
   name: binutils 
   release: 3
-  versions: !include gcc-versions.yaml
+  versions: !include versions.yaml
   version:  "{{versions.binutils}}" 
   gcc_version: "{{versions.gcc}}"
   extension: tar.gz

@@ -2,7 +2,7 @@
 ---
 - package: mpfr update for gcc {{gcc_version}} 
   name: mpfr 
-  versions: !include gcc-versions.yaml
+  versions: !include versions.yaml
   version: "{{versions.mpfr}}" 
   vendor_source: http://mirrors.kernel.org/gnu/mpfr/mpfr-{{version}}.tar.xz 
   description: mpfr {{version}} update for GCC {{gcc_version}}

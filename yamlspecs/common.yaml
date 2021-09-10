@@ -1,7 +1,7 @@
 !include rcic-package.yaml
 ---
 - baserpm: gcc_{{gcc_version}}-{{name}} 
-  versions: !include gcc-versions.yaml
+  versions: !include versions.yaml
   gcc_version: "{{versions.gcc}}"
   extension: tar.xz
   release: 2
