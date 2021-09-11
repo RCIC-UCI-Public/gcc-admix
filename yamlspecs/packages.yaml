@@ -30,3 +30,4 @@ manifest:
    - "{{build}}" 
 sets:
    - gcc8
+   - gcc10
