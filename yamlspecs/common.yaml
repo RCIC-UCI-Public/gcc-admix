@@ -9,7 +9,8 @@
   parent: "{{pkg_defaults.app_path}}/gcc" 
   root: "{{parent}}/{{gcc_version}}"
   build:
-    configure_args: --disable-nls
+    configure:  ./configure
+    configure_args: --disable-nls --prefix={{root}}
     modules: gcc/{{gcc_version}}
   install:
     makeinstall: $(MAKE) DESTDIR=$(ROOT) install
