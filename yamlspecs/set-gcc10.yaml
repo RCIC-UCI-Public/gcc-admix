@@ -1,3 +1,3 @@
 !include packages.yaml
 ---
-versions: gcc10.versions.yaml
+versions: versions-gcc10.yaml
