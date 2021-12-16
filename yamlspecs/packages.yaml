@@ -1,4 +1,5 @@
 # System RPMS required to build this admix
+site: !include site.yaml
 system:
    - glibc-devel.i686
    - libgcc.i686
@@ -8,7 +9,7 @@ system:
    - flex
    - gmp-devel
    - libmpc-devel
-   - libmpfr-devel
+   - !ifeq "{{site.os_release}},8,mpfr-devel,libmpfr-devel"
    - texinfo
 # Modules to build AND install locally. Order IS important
 bootstrap:

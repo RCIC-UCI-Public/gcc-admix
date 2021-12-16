@@ -33,7 +33,7 @@
       zcat ../mpc-{{mpc_version}}.tar.gz |  $(TAR) xf -; mv mpc-{{mpc_version}} mpc; 
       xzcat ../mpfr-{{mpfr_version}}.tar.xz | $(TAR) xf -; mv mpfr-{{mpfr_version}} mpfr; 
       xzcat ../isl-{{isl_version}}.tar.xz | $(TAR) xf -; mv isl-{{isl_version}} isl; 
-      mkdir ../{{builddir}} 
+      mkdir ../{{builddir}}
 
     # build c, c++, go, objc, obj-c++,fortran, java
     configure: cd ../{{builddir}}; ../gcc-{{gcc_version}}/configure
@@ -41,7 +41,7 @@
       --disable-nls --enable-languages=c,c++,go,objc,obj-c++,fortran 
       --enable-threads=posix
       --prefix={{root}}
-    pkgmake: make -j 8
+    pkgmake: unset MAKEFLAGS; make -j 8
   install:
     makeinstall: cd ../{{builddir}}; $(MAKE) prefix=$(ROOT)/{{root}} install 
     installextra: cd ../{{builddir}}; $(INSTALL) -m 644  README $(ROOT)/{{root}}/README.{{name}}
