@@ -2,9 +2,8 @@
 ---
 - package: libiconv update for gcc {{gcc_version}} 
   name: libiconv 
-  extension: tar.gz
   version: "{{versions.libiconv}}" 
-  vendor_source: http://mirrors.kernel.org/gnu/libiconv/libiconv-{{version}}.tar.gz 
+  vendor_source: http://mirrors.kernel.org/gnu/libiconv/libiconv-{{version}}.{{extension}}
   description: libiconv {{version}} update for GCC {{gcc_version}}
   build:
     patchfile: "{{name}}-{{version}}.patch"

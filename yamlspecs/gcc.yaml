@@ -5,34 +5,38 @@
   versions: !include versions.yaml
   version: "{{versions.gcc}}" 
   release: 2
-  vendor_source: http://mirrors.kernel.org/gnu/gcc/gcc-{{gcc_version}}/gcc-{{gcc_version}}.tar.gz
+  vendor_source: http://mirrors.kernel.org/gnu/gcc/gcc-{{gcc_version}}/gcc-{{gcc_version}}.{{extension}}
   gcc_version: "{{versions.gcc}}"
   gmp_version: "{{versions.gmp}}"
+  gmpext: "{{versions.gmp_ext}}"
   isl_version: "{{versions.isl}}"
+  islext: "{{versions.isl_ext}}"
   libiconv_version: "{{versions.libiconv}}"
   mpc_version: "{{versions.mpc}}"
   mpfr_version: "{{versions.mpfr}}"
+  mpfrext: "{{versions.mpfr_ext}}"
   description: |
     GCC/G++/GO/GFORTRAN/OBJC/OBJC++ {{gcc_version}}, gmp v.{{gmp_version}},
-    mpc v.{{mpc_version}}, libiconv v.{{libiconv_version}} mpfr v.{{mpfr_version}}, isl v.{{isl_version}}
+    mpc v.{{mpc_version}}, libiconv v.{{libiconv_version}} mpfr v.{{mpfr_version}}, isl v.{{isl_version}}.
+    See GCC {{versions.gcc_series}} Release Series changes https://gcc.gnu.org/gcc-{{versions.gcc_series}}/changes.html
   builddir: gcc-build
   # sources need to be added and unpacked so that gcc builds will use these versions
   addsource: 
-     - gmp-{{gmp_version}}.tar.xz  
-     - isl-{{isl_version}}.tar.xz  
-     - mpc-{{mpc_version}}.tar.gz 
-     - libiconv-{{libiconv_version}}.tar.gz
-     - mpfr-{{mpfr_version}}.tar.xz  
+     - gmp-{{gmp_version}}.{{gmpext}}
+     - isl-{{isl_version}}.{{islext}}
+     - mpc-{{mpc_version}}.{{extension}}
+     - libiconv-{{libiconv_version}}.{{extension}}
+     - mpfr-{{mpfr_version}}.{{mpfrext}}
   build:
     # Build with gmp,mcp,libiconv,mpfr
     # Build instructions for GCC "unpack tarballs and place in tree"
     preconfigure: >
-      xzcat ../gmp-{{gmp_version}}.tar.xz | $(TAR) xf - ; mv gmp-{{gmp_version}} gmp; 
+      xzcat ../gmp-{{gmp_version}}.{{gmpext}} | $(TAR) xf - ; mv gmp-{{gmp_version}} gmp; 
       zcat ../libiconv-{{libiconv_version}}.tar.gz | $(TAR) xf -; 
       mv libiconv-{{libiconv_version}} libiconv; 
       zcat ../mpc-{{mpc_version}}.tar.gz |  $(TAR) xf -; mv mpc-{{mpc_version}} mpc; 
-      xzcat ../mpfr-{{mpfr_version}}.tar.xz | $(TAR) xf -; mv mpfr-{{mpfr_version}} mpfr; 
-      xzcat ../isl-{{isl_version}}.tar.xz | $(TAR) xf -; mv isl-{{isl_version}} isl; 
+      xzcat ../mpfr-{{mpfr_version}}.{{mpfrext}} | $(TAR) xf -; mv mpfr-{{mpfr_version}} mpfr; 
+      xzcat ../isl-{{isl_version}}.{{islext}} | $(TAR) xf -; mv isl-{{isl_version}} isl; 
       mkdir ../{{builddir}}
 
     # build c, c++, go, objc, obj-c++,fortran, java

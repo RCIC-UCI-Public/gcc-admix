@@ -4,7 +4,6 @@
 - baserpm: gcc_{{gcc_version}}-{{name}} 
   versions: !include versions.yaml
   gcc_version: "{{versions.gcc}}"
-  extension: tar.xz
   release: 2
   parent: "{{pkg_defaults.app_path}}/gcc" 
   root: "{{parent}}/{{gcc_version}}"

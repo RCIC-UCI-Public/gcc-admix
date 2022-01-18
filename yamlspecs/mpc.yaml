@@ -3,6 +3,5 @@
 - package: mpc update for gcc {{gcc_version}} 
   name: mpc 
   version: "{{versions.mpc}}" 
-  extension: tar.gz
   vendor_source: http://mirrors.kernel.org/gnu/mpc/mpc-{{version}}.{{extension}}
   description: mpc {{version}} update for GCC {{gcc_version}}

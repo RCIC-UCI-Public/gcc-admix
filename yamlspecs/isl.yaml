@@ -3,5 +3,6 @@
 - package: isl update for gcc {{gcc_version}} 
   name: isl 
   version: "{{versions.isl}}" 
-  vendor_source: http://isl.gforge.inria.fr/isl-{{version}}.tar.xz 
+  extension: "{{versions.isl_ext}}"
+  vendor_source: https://sourceforge.net/projects/libisl/files/{{name}}-{{version}}.{{extension}}
   description: isl {{version}} update for GCC {{gcc_version}}

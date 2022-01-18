@@ -8,8 +8,7 @@
   versions: !include versions.yaml
   version:  "{{versions.binutils}}" 
   gcc_version: "{{versions.gcc}}"
-  extension: tar.gz
-  vendor_source: http://mirrors.kernel.org/gnu/binutils/binutils-{{version}}.tar.gz 
+  vendor_source: http://mirrors.kernel.org/gnu/binutils/binutils-{{version}}.{{extension}}
   baserpm: gcc_{{gcc_version}}-{{name}}-bootstrap 
   description: Binutils {{version}} update for GCC {{gcc_version}}
   root: "{{pkg_defaults.app_path}}/gcc/{{gcc_version}}"

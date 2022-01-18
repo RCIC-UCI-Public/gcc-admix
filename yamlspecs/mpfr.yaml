@@ -4,5 +4,6 @@
   name: mpfr 
   versions: !include versions.yaml
   version: "{{versions.mpfr}}" 
-  vendor_source: http://mirrors.kernel.org/gnu/mpfr/mpfr-{{version}}.tar.xz 
+  extension: "{{versions.mpfr_ext}}"
+  vendor_source: http://mirrors.kernel.org/gnu/mpfr/mpfr-{{version}}.{{extension}}
   description: mpfr {{version}} update for GCC {{gcc_version}}

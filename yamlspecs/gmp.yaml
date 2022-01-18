@@ -3,5 +3,6 @@
 - package: gmp update for gcc {{gcc_version}} 
   name: gmp 
   version: "{{versions.gmp}}" 
-  vendor_source: http://mirrors.kernel.org/gnu/gmp/gmp-{{version}}.tar.xz 
+  extension: "{{versions.gmp_ext}}"
+  vendor_source: http://mirrors.kernel.org/gnu/gmp/gmp-{{version}}.{{extension}}
   description: gmp {{version}} update for GCC {{gcc_version}}
