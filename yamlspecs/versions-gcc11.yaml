@@ -1,0 +1,10 @@
+!include versions.yaml
+---
+gcc: "11.2.0"
+gcc_series: "11"
+gmp: "6.2.1"
+mpfr: "4.1.0" 
+binutils: "2.37"
+libiconv: "1.16" 
+mpc: "1.2.1" 
+isl: "0.24" 

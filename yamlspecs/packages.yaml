@@ -17,12 +17,12 @@ bootstrap:
    - gcc
    - gcc-module
    - binutils
+   - mpfr
 # Modules to build. Order is NOT important
 build:
    - gmp
    - libiconv
    - mpc
-   - mpfr
 # What to install (usual case)
 manifest:
    - gcc
@@ -32,3 +32,4 @@ manifest:
 sets:
    - gcc8
    - gcc10
+   - gcc11
