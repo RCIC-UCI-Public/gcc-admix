@@ -1,3 +1,6 @@
 !include packages.yaml
 ---
 versions: versions-gcc10.yaml
+build_set_specific:
+   - !ifeq "{{site.os_release}},7,,annobin"
+

@@ -10,3 +10,4 @@ libiconv: "1.16"
 mpc: "1.1.0" 
 mpfr: "4.0.1" 
 mpfr_ext: tar.xz
+annobin: "10.54"

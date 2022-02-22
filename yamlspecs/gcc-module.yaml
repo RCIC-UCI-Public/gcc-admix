@@ -21,7 +21,7 @@
       - *Prepend_path
       - LD_LIBRARY_PATH {{root}}/lib/gcc/x86_64-pc-linux-gnu/{{gcc_version}}
       - LD_LIBRARY_PATH {{root}}/lib
-      - -d " " CPPFLAGS -I{{root}}/include
+      - -d " " CPPFLAGS "-I{{root}}/include -I{{root}}/lib/gcc/x86_64-pc-linux-gnu/{{gcc_version}}/plugin/include"
       - -d " " LDFLAGS "-L{{root}}/lib/gcc/x86_64-pc-linux-gnu/{{gcc_version}} -Wl,-rpath,{{root}}/lib/gcc/x86_64-pc-linux-gnu/{{gcc_version}}"
       - -d " " LDFLAGS "-L{{root}}/lib -Wl,-rpath,{{root}}/lib"
       - -d " " LDFLAGS "-L{{root}}/{{module.lib}} -Wl,-rpath,{{root}}/{{module.lib}}"
