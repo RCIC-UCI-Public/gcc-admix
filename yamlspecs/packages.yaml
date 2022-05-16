@@ -1,4 +1,3 @@
-# System RPMS required to build this admix
 site: !include site.yaml
 system:
    - glibc-devel.i686
@@ -11,23 +10,18 @@ system:
    - libmpc-devel
    - !ifeq "{{site.os_release}},8,mpfr-devel,libmpfr-devel"
    - texinfo
-# Modules to build AND install locally. Order IS important
 bootstrap:
    - binutils-bootstrap
    - gcc
    - gcc-module
    - binutils
    - mpfr
-# Modules to build. Order is NOT important
 build:
    - gmp
    - libiconv
    - mpc
    - "{{build_set_specific}}"
-
 build_set_specific:
-
-# What to install (usual case)
 manifest:
    - gcc
    - gcc-module
@@ -35,5 +29,5 @@ manifest:
    - "{{build}}" 
 sets:
    - gcc8
-   - gcc10
+#  - gcc10
    - gcc11
