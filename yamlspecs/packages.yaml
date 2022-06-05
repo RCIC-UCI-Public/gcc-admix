@@ -11,6 +11,7 @@ system:
    - libmpc-devel
    - !ifeq "{{site.os_release}},8,mpfr-devel,libmpfr-devel"
    - texinfo
+   - binutils-devel
 # Modules to build AND install locally. Order IS important
 bootstrap:
    - binutils-bootstrap
