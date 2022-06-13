@@ -7,6 +7,7 @@
   build:
     modules: 
       - gcc/{{gcc_version}}
-    configure: CFLAGS=-fPIC ./configure
+    configure: unset CPPFLAGS; CFLAGS=-fPIC ./configure
+    pkgmake: unset CPPFLAGS; make -j 8
   requires:
     - gcc_{{gcc_version}}
