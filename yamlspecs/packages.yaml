@@ -33,6 +33,7 @@ manifest:
    - gcc
    - gcc-module
    - binutils
+   - mpfr
    - "{{build}}" 
 sets:
    - gcc8
