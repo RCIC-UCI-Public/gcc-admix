@@ -12,6 +12,9 @@ system:
    - !ifeq "{{site.os_release}},8,mpfr-devel,libmpfr-devel"
    - texinfo
    - binutils-devel
+   - gcc-c++ 
+   - gcc-gdb-plugin
+   - libstdc++-devel
 # Modules to build AND install locally. Order IS important
 bootstrap:
    - binutils-bootstrap
