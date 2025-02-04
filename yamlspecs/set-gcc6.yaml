@@ -1,8 +1,6 @@
 !include packages.yaml
 ---
-versions: versions-gcc11.yaml
-build_set_specific:
-   - annobin
+versions: versions-gcc6.yaml
 manifest:
    - "{{bootstrap1}}"
    - "{{build}}"

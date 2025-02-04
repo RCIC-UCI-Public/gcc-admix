@@ -15,29 +15,24 @@ system:
    - gcc-c++ 
    - gcc-gdb-plugin
    - libstdc++-devel
-# Modules to build AND install locally. Order IS important
-bootstrap:
+bootstrap0:
    - binutils-bootstrap
+bootstrap1:
    - gcc
    - gcc-module
    - binutils
    - mpfr
-# Modules to build. Order is NOT important
+bootstrap:
+   - "{{bootstrap0}}"
+   - "{{bootstrap1}}"
 build:
    - gmp
    - libiconv
    - mpc
    - "{{build_set_specific}}"
-
 build_set_specific:
-
-# What to install (usual case)
 manifest:
-   - gcc
-   - gcc-module
-   - binutils
-   - mpfr
-   - "{{build}}" 
 sets:
+   - gcc6
    - gcc8
    - gcc11

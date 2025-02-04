@@ -2,5 +2,7 @@
 ---
 versions: versions-gcc8.yaml
 build_set_specific:
-   - !ifeq "{{site.os_release}},7,,annobin"
-
+   - annobin
+manifest:
+   - "{{bootstrap1}}"
+   - "{{build}}"
