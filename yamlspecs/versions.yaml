@@ -1,4 +1,6 @@
 ## Baseline versions for gcc
+---
+admix: gcc-admix
 binutils: "2.31"
 gmp: "6.1.2"
 gmp_ext: tar.xz
