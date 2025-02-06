@@ -22,14 +22,13 @@ bootstrap1:
    - gcc-module
    - binutils
    - mpfr
-bootstrap:
-   - "{{bootstrap0}}"
-   - "{{bootstrap1}}"
-build:
+build0:
    - gmp
    - libiconv
    - mpc
    - "{{build_set_specific}}"
+bootstrap:
+build:
 build_set_specific:
 manifest:
 sets:

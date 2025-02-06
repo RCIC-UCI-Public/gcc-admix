@@ -1,6 +1,11 @@
 !include packages.yaml
 ---
 versions: versions-gcc6.yaml
+bootstrap:
+   - "{{bootstrap0}}"
+   - "{{bootstrap1}}"
+build:
+   - "{{build0}}"
 manifest:
    - "{{bootstrap1}}"
    - "{{build}}"
