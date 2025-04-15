@@ -9,11 +9,11 @@ system:
    - flex
    - gmp-devel
    - libmpc-devel
-   - !ifeq "{{site.os_release}},8,mpfr-devel,libmpfr-devel"
+   - !ifeq "{{site.os_release}},7,libmpfr-devel,bmpfr-devel"
    - texinfo
    - binutils-devel
    - gcc-c++ 
-   - gcc-gdb-plugin
+   - !ifeq "{{site.os_release}},9,,gcc-gdb-plugin"
    - libstdc++-devel
 bootstrap0:
    - binutils-bootstrap
