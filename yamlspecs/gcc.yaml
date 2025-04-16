@@ -39,11 +39,12 @@
       xzcat ../isl-{{isl_version}}.{{islext}} | $(TAR) xf -; mv isl-{{isl_version}} isl; 
       mkdir ../{{builddir}}
 
-    # build c, c++, go, objc, obj-c++,fortran, java
+    # build c, c++, objc, obj-c++,fortran, java
+    configure_oldgcc:  !ifneq "{{versions.gcc_series}},11,--disable-multilib --disable-libsanitizer,"
     configure: cd ../{{builddir}}; ../gcc-{{gcc_version}}/configure
     configure_args: >
-      --disable-nls --enable-languages=c,c++,go,objc,obj-c++,fortran 
-      --enable-threads=posix
+      --disable-nls --enable-languages=c,c++,objc,obj-c++,fortran
+      --enable-threads=posix {{build.configure_oldgcc}} 
       --prefix={{root}}
     pkgmake: unset MAKEFLAGS; make -j 8
   install:
