@@ -15,6 +15,7 @@ system:
    - gcc-c++ 
    - !ifeq "{{site.os_release}},9,,gcc-gdb-plugin"
    - libstdc++-devel
+   - rpm-devel
 bootstrap0:
    - binutils-bootstrap
 bootstrap1:
