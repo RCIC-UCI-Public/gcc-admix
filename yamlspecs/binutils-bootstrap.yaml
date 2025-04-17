@@ -1,6 +1,7 @@
 # This is the bootstrap version of binutils, built with the system gcc. 
 # it is rebuilt using the new gcc in its final form 
 !include rcic-package.yaml
+!include rpm.yaml
 ---
 - package: binutils update for gcc 
   name: binutils 
@@ -12,7 +13,6 @@
   baserpm: gcc_{{gcc_version}}-{{name}}-bootstrap 
   description: Binutils {{version}} update for GCC {{gcc_version}}
   root: "{{pkg_defaults.app_path}}/gcc/{{gcc_version}}"
-  addfile: wrapstrip
   build:
     configure: ./configure
     configure_args: --disable-nls --disable-werror --prefix={{root}}
@@ -25,7 +25,4 @@
     - "{{root}}" 
   provides:
     - GCC_{{gcc_version}}-BINUTILS
-  rpm:
-    extras: >
-        %define __strip %{_builddir}/%{NAME}-%{VERSION}/wrapstrip
 

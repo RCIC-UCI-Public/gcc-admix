@@ -6,6 +6,7 @@
   version: "{{versions.gcc}}" 
   release: 2
   vendor_source: http://mirrors.kernel.org/gnu/gcc/gcc-{{gcc_version}}/gcc-{{gcc_version}}.{{extension}}
+  oldrelease: !eval "'Yes' if {{versions.gcc_series}} < 11 else 'No'"
   gcc_version: "{{versions.gcc}}"
   gmp_version: "{{versions.gmp}}"
   gmpext: "{{versions.gmp_ext}}"

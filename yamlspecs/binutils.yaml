@@ -12,7 +12,4 @@
     pkgmake: unset CPPFLAGS; make -j 8
   requires:
     - gcc_{{gcc_version}}
-  rpm:
-    extras: >
-        %define __strip %{_builddir}/%{NAME}-%{VERSION}/wrapstrip
 
