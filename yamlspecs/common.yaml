@@ -7,6 +7,7 @@
   release: 2
   parent: "{{pkg_defaults.app_path}}/gcc" 
   root: "{{parent}}/{{gcc_version}}"
+  addfile: wrapstrip
   build:
     configure:  ./configure
     configure_args: --disable-nls --prefix={{root}}
@@ -20,8 +21,9 @@
     - "gcc_{{gcc_version}}"
   buildrequires: "gcc_{{gcc_version}}"
 
-  # For RPMs built with older gcc on Rocky 9, turn of stripping
+  # Older gcc rpms built on Rocky 9 can generate unrecognized files
+  # for strip.   Wrap strip to ignore stripping errors
   rpm:
-    oldextras:  !ifneq "{{versions.gcc_series}},11,%define __brp_strip /bin/true,"
     extras: >
-        {{rpm.oldextras}}
+       %define __strip %{_builddir}/%{NAME}-%{VERSION}/wrapstrip
+ 

@@ -3,11 +3,16 @@
 !include rpm.yaml
 ---
   baserpm: gcc_{{gcc_version}}-{{name}}
-  obsoletes: "{{baserpm}}-bootstrap"
+  obsoletes: "{{baserpm}}-bootstrap == {{version}}"
   build:
     modules: 
       - gcc/{{gcc_version}}
+    preconfigure: set | grep ^RPM
     configure: unset CPPFLAGS; CFLAGS=-fPIC ./configure
     pkgmake: unset CPPFLAGS; make -j 8
   requires:
     - gcc_{{gcc_version}}
+  rpm:
+    extras: >
+        %define __strip %{_builddir}/%{NAME}-%{VERSION}/wrapstrip
+
