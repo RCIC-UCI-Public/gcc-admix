@@ -19,3 +19,9 @@
   requires: 
     - "gcc_{{gcc_version}}"
   buildrequires: "gcc_{{gcc_version}}"
+
+  # For RPMs built with older gcc on Rocky 9, turn of stripping
+  rpm:
+    oldextras:  !ifneq "{{versions.gcc_series}},11,%define __brp_strip /bin/true,"
+    extras: >
+        {{rpm.oldextras}}
