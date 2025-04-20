@@ -53,3 +53,6 @@
     installextra: cd ../{{builddir}}; $(INSTALL) -m 644  README $(ROOT)/{{root}}/README.{{name}}
   requires:
     - GCC_{{gcc_version}}-BINUTILS
+  rpm:
+    extras: >
+     "%define __strip %{getenv:YAML2RPM_HOME}/bin/wrapstrip"  
