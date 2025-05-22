@@ -1,14 +1,12 @@
 !include common.yaml
 ---
-- package: annobin plugin for gcc {{gcc_version}} 
-  name: annobin 
+- package: annobin plugin for gcc {{gcc_version}}
+  name: annobin
   extension: tar.xz
-  version: "{{versions.annobin}}" 
+  version: "{{versions.annobin}}"
   vendor_source: https://nickc.fedorapeople.org/{{name}}-{{version}}.{{extension}}
   description: >
-     Annonbin {{version}} for GCC {{gcc_version}}. Provides a plugin for GCC that records 
+     Annonbin {{version}} for GCC {{gcc_version}}. Provides a plugin for GCC that records
      extra information in the files that it compiles.
-  
   build:
     pkgmake: unset MAKEFLAGS; make
-    

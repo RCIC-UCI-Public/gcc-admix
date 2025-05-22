@@ -1,8 +1,8 @@
 !include common.yaml
 ---
-- package: isl update for gcc {{gcc_version}} 
-  name: isl 
-  version: "{{versions.isl}}" 
+- package: isl update for gcc {{gcc_version}}
+  name: isl
+  version: "{{versions.isl}}"
   extension: "{{versions.isl_ext}}"
   vendor_source: https://sourceforge.net/projects/libisl/files/{{name}}-{{version}}.{{extension}}
   description: isl {{version}} update for GCC {{gcc_version}}

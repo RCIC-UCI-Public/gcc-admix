@@ -1,28 +1,28 @@
-# This is the bootstrap version of binutils, built with the system gcc. 
-# it is rebuilt using the new gcc in its final form 
+# This is the bootstrap version of binutils, built with the system gcc.
+# it is rebuilt using the new gcc in its final form
 !include rcic-package.yaml
 !include rpm.yaml
 ---
-- package: binutils update for gcc 
-  name: binutils 
+- package: binutils update for gcc
+  name: binutils
   release: 3
   versions: !include versions.yaml
-  version:  "{{versions.binutils}}" 
+  version:  "{{versions.binutils}}"
   gcc_version: "{{versions.gcc}}"
   vendor_source: http://mirrors.kernel.org/gnu/binutils/binutils-{{version}}.{{extension}}
-  baserpm: gcc_{{gcc_version}}-{{name}}-bootstrap 
+  baserpm: gcc_{{gcc_version}}-{{name}}-bootstrap
   description: Binutils {{version}} update for GCC {{gcc_version}}
   root: "{{pkg_defaults.app_path}}/gcc/{{gcc_version}}"
   build:
     configure: ./configure
     configure_args: --disable-nls --disable-werror --prefix={{root}}
   install:
-    makeinstall: $(MAKE) prefix=$(ROOT)/{{root}} install 
+    makeinstall: $(MAKE) prefix=$(ROOT)/{{root}} install
     installextra: >
-      $(INSTALL) -m 644  README $(ROOT)/{{root}}/README.{{name}}; 
+      $(INSTALL) -m 644  README $(ROOT)/{{root}}/README.{{name}};
       /bin/rm $(ROOT)/{{root}}/share/info/dir
   files:
-    - "{{root}}" 
+    - "{{root}}"
   provides:
     - GCC_{{gcc_version}}-BINUTILS
 

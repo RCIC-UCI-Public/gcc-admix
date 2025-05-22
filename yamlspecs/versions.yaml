@@ -4,9 +4,9 @@ admix: gcc-admix
 binutils: "2.31"
 gmp: "6.1.2"
 gmp_ext: tar.xz
-isl: "0.21" 
+isl: "0.21"
 isl_ext: tar.xz
-libiconv: "1.16" 
-mpc: "1.1.0" 
+libiconv: "1.16"
+mpc: "1.1.0"
 mpfr_ext: tar.xz
 annobin: "10.54"

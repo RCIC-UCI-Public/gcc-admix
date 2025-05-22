@@ -1,10 +1,10 @@
-# This is the final version of binutils, built with the proper version of gcc 
+# This is the final version of binutils, built with the proper version of gcc
 !include binutils-bootstrap.yaml
 ---
   baserpm: gcc_{{gcc_version}}-{{name}}
   obsoletes: "{{baserpm}}-bootstrap == {{version}}"
   build:
-    modules: 
+    modules:
       - gcc/{{gcc_version}}
     preconfigure: set | grep ^RPM
     configure: unset CPPFLAGS; CFLAGS=-fPIC ./configure

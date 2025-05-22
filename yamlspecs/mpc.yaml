@@ -1,7 +1,7 @@
 !include common.yaml
 ---
-- package: mpc update for gcc {{gcc_version}} 
-  name: mpc 
-  version: "{{versions.mpc}}" 
+- package: mpc update for gcc {{gcc_version}}
+  name: mpc
+  version: "{{versions.mpc}}"
   vendor_source: http://mirrors.kernel.org/gnu/mpc/mpc-{{version}}.{{extension}}
   description: mpc {{version}} update for GCC {{gcc_version}}

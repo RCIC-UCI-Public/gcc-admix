@@ -1,8 +1,8 @@
 !include common.yaml
 ---
-- package: libiconv update for gcc {{gcc_version}} 
-  name: libiconv 
-  version: "{{versions.libiconv}}" 
+- package: libiconv update for gcc {{gcc_version}}
+  name: libiconv
+  version: "{{versions.libiconv}}"
   vendor_source: http://mirrors.kernel.org/gnu/libiconv/libiconv-{{version}}.{{extension}}
   description: libiconv {{version}} update for GCC {{gcc_version}}
   build:

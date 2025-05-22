@@ -1,9 +1,9 @@
 !include rcic-package.yaml
 ---
-- package: gcc/g++/go {{gcc_version}} 
+- package: gcc/g++/go {{gcc_version}}
   name: gcc
   versions: !include versions.yaml
-  version: "{{versions.gcc}}" 
+  version: "{{versions.gcc}}"
   release: 2
   vendor_source: http://mirrors.kernel.org/gnu/gcc/gcc-{{gcc_version}}/gcc-{{gcc_version}}.{{extension}}
   oldrelease: !eval "'Yes' if {{versions.gcc_series}} < 11 else 'No'"
@@ -17,12 +17,12 @@
   mpfr_version: "{{versions.mpfr}}"
   mpfrext: "{{versions.mpfr_ext}}"
   description: |
-    GCC/G++/GO/GFORTRAN/OBJC/OBJC++ {{gcc_version}}, gmp v.{{gmp_version}},
+    GNU GCC compiler. Provides GCC/G++/GO/GFORTRAN/OBJC/OBJC++ {{gcc_version}}, gmp v.{{gmp_version}},
     mpc v.{{mpc_version}}, libiconv v.{{libiconv_version}} mpfr v.{{mpfr_version}}, isl v.{{isl_version}}.
     See GCC {{versions.gcc_series}} Release Series changes https://gcc.gnu.org/gcc-{{versions.gcc_series}}/changes.html
   builddir: gcc-build
   # sources need to be added and unpacked so that gcc builds will use these versions
-  addsource: 
+  addsource:
      - gmp-{{gmp_version}}.{{gmpext}}
      - isl-{{isl_version}}.{{islext}}
      - mpc-{{mpc_version}}.{{extension}}
@@ -32,12 +32,12 @@
     # Build with gmp,mcp,libiconv,mpfr
     # Build instructions for GCC "unpack tarballs and place in tree"
     preconfigure: >
-      xzcat ../gmp-{{gmp_version}}.{{gmpext}} | $(TAR) xf - ; mv gmp-{{gmp_version}} gmp; 
-      zcat ../libiconv-{{libiconv_version}}.tar.gz | $(TAR) xf -; 
-      mv libiconv-{{libiconv_version}} libiconv; 
-      zcat ../mpc-{{mpc_version}}.tar.gz |  $(TAR) xf -; mv mpc-{{mpc_version}} mpc; 
-      xzcat ../mpfr-{{mpfr_version}}.{{mpfrext}} | $(TAR) xf -; mv mpfr-{{mpfr_version}} mpfr; 
-      xzcat ../isl-{{isl_version}}.{{islext}} | $(TAR) xf -; mv isl-{{isl_version}} isl; 
+      xzcat ../gmp-{{gmp_version}}.{{gmpext}} | $(TAR) xf - ; mv gmp-{{gmp_version}} gmp;
+      zcat ../libiconv-{{libiconv_version}}.tar.gz | $(TAR) xf -;
+      mv libiconv-{{libiconv_version}} libiconv;
+      zcat ../mpc-{{mpc_version}}.tar.gz |  $(TAR) xf -; mv mpc-{{mpc_version}} mpc;
+      xzcat ../mpfr-{{mpfr_version}}.{{mpfrext}} | $(TAR) xf -; mv mpfr-{{mpfr_version}} mpfr;
+      xzcat ../isl-{{isl_version}}.{{islext}} | $(TAR) xf -; mv isl-{{isl_version}} isl;
       mkdir ../{{builddir}}
 
     # build c, c++, objc, obj-c++,fortran, java
@@ -45,14 +45,14 @@
     configure: cd ../{{builddir}}; ../gcc-{{gcc_version}}/configure
     configure_args: >
       --disable-nls --enable-languages=c,c++,objc,obj-c++,fortran
-      --enable-threads=posix {{build.configure_oldgcc}} 
+      --enable-threads=posix {{build.configure_oldgcc}}
       --prefix={{root}}
     pkgmake: unset MAKEFLAGS; make -j 8
   install:
-    makeinstall: cd ../{{builddir}}; $(MAKE) prefix=$(ROOT)/{{root}} install 
+    makeinstall: cd ../{{builddir}}; $(MAKE) prefix=$(ROOT)/{{root}} install
     installextra: cd ../{{builddir}}; $(INSTALL) -m 644  README $(ROOT)/{{root}}/README.{{name}}
   requires:
     - GCC_{{gcc_version}}-BINUTILS
   rpm:
     extras: >
-     "%define __strip %{getenv:YAML2RPM_HOME}/bin/wrapstrip"  
+     "%define __strip %{getenv:YAML2RPM_HOME}/bin/wrapstrip"

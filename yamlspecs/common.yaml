@@ -1,11 +1,11 @@
 !include rcic-package.yaml
 !include rpm.yaml
 ---
-- baserpm: gcc_{{gcc_version}}-{{name}} 
+- baserpm: gcc_{{gcc_version}}-{{name}}
   versions: !include versions.yaml
   gcc_version: "{{versions.gcc}}"
   release: 2
-  parent: "{{pkg_defaults.app_path}}/gcc" 
+  parent: "{{pkg_defaults.app_path}}/gcc"
   root: "{{parent}}/{{gcc_version}}"
   build:
     configure:  ./configure
@@ -16,7 +16,6 @@
     installextra: >
       $(INSTALL) -m 644  README $(ROOT){{root}}/README.{{name}};
       /bin/rm $(ROOT)/{{root}}/share/info/dir
-  requires: 
+  requires:
     - "gcc_{{gcc_version}}"
   buildrequires: "gcc_{{gcc_version}}"
- 

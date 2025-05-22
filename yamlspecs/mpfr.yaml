@@ -1,9 +1,9 @@
 !include common.yaml
 ---
-- package: mpfr update for gcc {{gcc_version}} 
-  name: mpfr 
+- package: mpfr update for gcc {{gcc_version}}
+  name: mpfr
   versions: !include versions.yaml
-  version: "{{versions.mpfr}}" 
+  version: "{{versions.mpfr}}"
   extension: "{{versions.mpfr_ext}}"
   vendor_source: http://mirrors.kernel.org/gnu/mpfr/mpfr-{{version}}.{{extension}}
   description: mpfr {{version}} update for GCC {{gcc_version}}

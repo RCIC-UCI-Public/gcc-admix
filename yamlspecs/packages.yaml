@@ -3,7 +3,7 @@ site: !include site.yaml
 system:
    - glibc-devel.i686
    - libgcc.i686
-   - libstdc++-devel.i686 
+   - libstdc++-devel.i686
    - ncurses-devel.i686
    - bison
    - flex
@@ -12,7 +12,7 @@ system:
    - !ifeq "{{site.os_release}},7,libmpfr-devel,mpfr-devel"
    - texinfo
    - binutils-devel
-   - gcc-c++ 
+   - gcc-c++
    - !ifeq "{{site.os_release}},9,,gcc-gdb-plugin"
    - libstdc++-devel
    - rpm-devel

@@ -1,6 +1,6 @@
-## Versions used to compile gcc 8.4.0 
+## Versions used to compile gcc 8.4.0
 !include versions.yaml
 ---
 gcc: "8.4.0"
 gcc_series: "8"
-mpfr: "4.0.2" 
+mpfr: "4.0.2"
