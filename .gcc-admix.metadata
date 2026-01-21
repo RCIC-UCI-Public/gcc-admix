@@ -14,3 +14,17 @@ ff4db5660e0ca2bd1dc79334258a365d8508e8c8  sources/binutils-2.37.tar.gz 1_19Jrym4
 d16012cf5bf35684ef0de68dab55279d34df4909  sources/isl-0.24.tar.xz 1JmL2qsCMTwoxxJA3B3DJkgU_ehhEXkNG
 2a4919abf445c6eda4e120cd669b8733ce337227  sources/mpc-1.2.1.tar.gz 1ZFWZQVPr5obTqoEd4PjHR7Ehz1rqbRv7
 d05ee3d63e94162fd1ad51b7d79a0c7a8638f47c  sources/annobin-10.54.tar.xz 1fzy8IIq4eBihNV8nOC6FfK2IKsR5Sqmx
+80bb9891aeaeceee6374a32302c0a918c9e70b67  sources/binutils-2.45.tar.gz
+4a3781743561d062d7993c97862c6c3fd4a177a5  sources/binutils-2.45.tar.gz.sig
+ba53f88cc7265f7a9039b8943eb31e7568afc54f  sources/gcc-15.2.0.tar.gz
+f0f1368673173e28aa80763220e3e43e97026774  sources/gcc-15.2.0.tar.gz.sig
+b4043dd2964ab1a858109da85c44de224384f352  sources/gmp-6.3.0.tar.xz
+a836322910ed3e56f6ceab0212b969ed6160b935  sources/gmp-6.3.0.tar.xz.sig
+8778bdabc1fbebe392564440c1ebbaaa45cdaf85  sources/isl-0.27.tar.xz
+3402aae249ec56e04114767c8f6bdaafc87a048c  sources/libiconv-1.18.tar.gz
+e4e458cabd4f5d5feee1f62fb6702b9eb4397fd4  sources/libiconv-1.18.tar.gz.sig
+bac1c1fa79f5602df1e29e4684e103ad55714e02  sources/mpc-1.3.1.tar.gz
+26131a649ddbf11466edcea0a32b676861bd6b2d  sources/mpc-1.3.1.tar.gz.sig
+a63a264b273a652e27518443640e69567da498ce  sources/mpfr-4.2.2.tar.xz
+048509525674d1a4108a30dfaabca0fc19cc5929  sources/mpfr-4.2.2.tar.xz.sig
+493bcf7366c557b82e9eaacaae945d70295d2ec4  sources/annobin-12.98.tar.xz
