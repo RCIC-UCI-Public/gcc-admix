@@ -6,3 +6,7 @@
   extension: "{{versions.gmp_ext}}"
   vendor_source: http://mirrors.kernel.org/gnu/gmp/gmp-{{version}}.{{extension}}
   description: gmp {{version}} update for GCC {{gcc_version}}
+
+  extraopts: !ifeq "{{version}},6.3.0,CFLAGS=-std=gnu17 ,"
+  build:
+    configure_args: --disable-nls --prefix={{root}} {{extraopts}}
