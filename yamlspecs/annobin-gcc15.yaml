@@ -1,0 +1,4 @@
+!include annobin.yaml
+---
+- build:
+    configure_args: --without-clang-plugin --without-llvm-plugin --prefix={{root}}

@@ -1,8 +1,11 @@
 !include packages.yaml
 ---
 versions: versions-gcc15.yaml
+system:
+   - elfutils-debuginfod
+   - iproute
 build_set_specific:
-   - annobin
+   - annobin-gcc15
 bootstrap:
    - "{{bootstrap0}}"
    - "{{bootstrap1}}"
