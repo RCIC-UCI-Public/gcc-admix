@@ -41,7 +41,7 @@
       mkdir ../{{builddir}}
 
     # build c, c++, objc, obj-c++,fortran, java
-    configure_oldgcc:  !ifneq "{{versions.gcc_series}},11,--disable-multilib --disable-libsanitizer,"
+    configure_oldgcc:  !ifeq "{{oldrelease}},Yes,--disable-multilib --disable-libsanitizer,"
     configure: cd ../{{builddir}}; ../gcc-{{gcc_version}}/configure
     configure_args: >
       --disable-nls --enable-languages=c,c++,objc,obj-c++,fortran
