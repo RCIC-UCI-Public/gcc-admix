@@ -1,4 +1,3 @@
-ls -l RPMS/*/ | grep rpm | awk '{printf "%-15.f %s\n", int($5/100)*100, $9}'
 92384200        gcc_11.2.0-11.2.0-2.x86_64.rpm
 209300          gcc_11.2.0-annobin-10.54-2.x86_64.rpm
 3246800         gcc_11.2.0-binutils-2.37-3.x86_64.rpm
