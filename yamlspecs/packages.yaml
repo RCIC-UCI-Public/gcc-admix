@@ -36,3 +36,4 @@ sets:
    - gcc6
    - gcc8
    - gcc11
+   - gcc15
