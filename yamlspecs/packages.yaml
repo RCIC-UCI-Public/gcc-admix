@@ -19,11 +19,11 @@ system:
    - libstdc++-devel
    - rpm-devel
 bootstrap0:
-   - binutils-bootstrap
+   - !eval "'binutils-bootstrap' if int({{site.os_release}}) < 10 else ''"
 bootstrap1:
    - gcc
    - gcc-module
-   - binutils
+   - !eval "'binutils' if int({{site.os_release}}) < 10 else ''"
    - mpfr
 build0:
    - gmp
