@@ -10,7 +10,7 @@
 
   # Some 'boolean' values for older gcc releases and newer OSes
   oldrelease: !eval "'Yes' if int({{versions.gcc_series}}) < 11 else 'No'"
-  os_10_or_newer: !eval "'Yes' if int({{versions.os_release}}) >= 10 else 'No'"
+  os_10_or_newer: !OScmp ">=,10,Yes,No"
 
   gcc_version: "{{versions.gcc}}"
   gmp_version: "{{versions.gmp}}"
@@ -61,4 +61,4 @@
     makeinstall: cd ../{{builddir}}; $(MAKE) prefix=$(ROOT)/{{root}} install
     installextra: cd ../{{builddir}}; $(INSTALL) -m 644  README $(ROOT)/{{root}}/README.{{name}}
   requires:
-     - !eval "'GCC_{{gcc_version}}-BINUTILS' if int({{versions.os_release}}) < 10 else 'binutils'"
+     - !OScmp "<,10,GCC_{{gcc_version}}-BINUTILS,binutils"

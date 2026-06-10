@@ -1,29 +1,28 @@
-# System RPMS required to build this admix
-site: !include site.yaml
+---
 system_pre10:
    - glibc-devel.i686
    - libgcc.i686
    - libstdc++-devel.i686
    - ncurses-devel.i686
 system:
-   - !eval "'{{system_pre10}}' if int({{site.os_release}}) < 10 else ''"
+   - !OScmp "<,10,{{system_pre10}},"
    - bison
    - flex
    - gmp-devel
    - libmpc-devel
-   - !ifeq "{{site.os_release}},7,libmpfr-devel,mpfr-devel"
+   - !OScmp "<=,7,libmpfr-devel,mpfr-devel"
    - texinfo
    - binutils-devel
    - gcc-c++
-   - !eval "'gcc-gdb-plugin' if int({{site.os_release}}) < 9 else ''"
+   - !OScmp "<,9,gcc-gdb-plugin,"
    - libstdc++-devel
    - rpm-devel
 bootstrap0:
-   - !eval "'binutils-bootstrap' if int({{site.os_release}}) < 10 else ''"
+   - !OScmp "<,10,binutils-bootstrap,"
 bootstrap1:
    - gcc
    - gcc-module
-   - !eval "'binutils' if int({{site.os_release}}) < 10 else ''"
+   - !OScmp "<,10,binutils,"
    - mpfr
 build0:
    - gmp
